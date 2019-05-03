@@ -11,7 +11,7 @@ import CreateBill from "./components/CreateBill";
 
 //Apollo client setup
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql/"
+  uri: "https://young-meadow-72634.herokuapp.com/graphql/"
 });
 
 class App extends React.Component {
