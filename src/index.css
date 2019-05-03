@@ -6,9 +6,21 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #eee;
 }
-
+table th {
+  background: #eee;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1.center {
+  text-align: center;
+}
+
+a.create {
+  display: flex;
+  justify-content: center;
 }
