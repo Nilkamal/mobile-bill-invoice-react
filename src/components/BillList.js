@@ -8,6 +8,9 @@ class BillList extends React.Component {
     console.log(data);
     return (
       <div className="pa4">
+        <div className="App container">
+          <h1 className="center">Bill Generation App</h1>
+        </div>
         <div className="overflow-auto">
           <p>
             <Link className="link dim near-black f3 create" to="/create/">
@@ -53,7 +56,10 @@ class BillList extends React.Component {
             <td className="pv3 pr3 bb b--black-20">{bill.customerName}</td>
             <td className="pv3 pr3 bb b--black-20">{bill.modelNumber}</td>
             <td className="pv3 pr3 bb b--black-20">
-              <Link className="link dim near-black f5 " to="/create/">
+              <Link
+                className="link dim near-black f5 "
+                to={`/generate/${bill.id}`}
+              >
                 Generate
               </Link>
             </td>

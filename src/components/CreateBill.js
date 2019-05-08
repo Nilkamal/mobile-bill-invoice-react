@@ -22,31 +22,36 @@ class CreateBill extends React.Component {
   saveBill = e => {
     console.log(this.state);
     e.preventDefault();
-    const result = this.props.addBillMutation({
-      variables: {
-        billNumber: this.state.billNumber,
-        date: this.state.date,
-        customerName: this.state.customerName,
-        address: this.state.address,
-        modelNumber: this.state.modelNumber,
-        imeiNumber: this.state.imeiNumber,
-        chargerNumber: this.state.chargerNumber,
-        warrenty: this.state.warranty,
-        amount: parseInt(this.state.amount)
-      }, refetchQueries: [{ query: getBillsQuery }]
-    }).then(d=>{
-        if(d.data.addBill.id) {
-            this.props.history.push('/');
+    this.props
+      .addBillMutation({
+        variables: {
+          billNumber: this.state.billNumber,
+          date: this.state.date,
+          customerName: this.state.customerName,
+          address: this.state.address,
+          modelNumber: this.state.modelNumber,
+          imeiNumber: this.state.imeiNumber,
+          chargerNumber: this.state.chargerNumber,
+          warrenty: this.state.warranty,
+          amount: parseInt(this.state.amount)
+        },
+        refetchQueries: [{ query: getBillsQuery }]
+      })
+      .then(d => {
+        if (d.data.addBill.id) {
+          this.props.history.push("/");
         } else {
-            alert('Problem, while creating new bill.')
+          alert("Problem, while creating new bill.");
         }
-    })
-
+      });
   };
   render() {
     console.log(this.props);
     return (
       <main className="pa4 black-80">
+        <div className="App container">
+          <h1 className="center">Bill Generation App</h1>
+        </div>
         <form className="measure center">
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f4 fw6 ph0 mh0">Create New Bill</legend>
@@ -198,4 +203,7 @@ class CreateBill extends React.Component {
   }
 }
 
-export default compose(graphql(addBillMutation,{name: "addBillMutation"}), graphql(getBillsQuery,{name: "getBillsQuery"}))(CreateBill);
+export default compose(
+  graphql(addBillMutation, { name: "addBillMutation" }),
+  graphql(getBillsQuery, { name: "getBillsQuery" })
+)(CreateBill);
